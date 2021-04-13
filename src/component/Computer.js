@@ -1,17 +1,31 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export default class Computer extends Component {
+class Computer extends Component {
   render() {
+    let keyframe = `@keyframes randomItem${Date.now()} {
+            0% {top: -50px;}
+            25% {top: 100px;}
+            50% {top: -50px;}
+            75% {top: 100px;}
+            100% {top: 0;}
+    }`;
     return (
       <div className="text-center game-computer">
-        <div className="chosen-item">
+        <style>{keyframe}</style>
+        <div className="chosen-item" style={{ position: "relative" }}>
           <img
-            style={{ transform: "rotate(120deg)" }}
+            style={{
+              position: "absolute",
+              left: "20%",
+              animation: `randomItem${Date.now()} 0.5s`,
+              transform: "rotate(120deg)",
+            }}
             className="mt-3"
             width={70}
             height={70}
-            src="./img/paper.png"
-            alt="./img/paper.png"
+            src={this.props.computer.img}
+            alt={this.props.computer.img}
           />
         </div>
         <div className="speech-bubble"></div>
@@ -24,3 +38,11 @@ export default class Computer extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    computer: state.RockPaperScissorsGameReducer.computer,
+  };
+};
+
+export default connect(mapStateToProps)(Computer);

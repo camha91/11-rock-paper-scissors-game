@@ -4,8 +4,8 @@
     height: 100%;
     position: fixed;
     background-size: 100%;
+	background-position-y: bottom;
 	font-family: fontGame;
-	text-size-adjust: 10px;
 }
 
 @font-face {
@@ -18,6 +18,10 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+.game-info {
+	font-size: 2rem;
 }
 
 .chosen-item {

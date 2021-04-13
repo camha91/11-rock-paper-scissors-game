@@ -1,21 +1,30 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export default class GameInfo extends Component {
+class GameInfo extends Component {
   render() {
     return (
-      <div>
-        <div className="display-5 text-warning">
-          I'm Iron Man. I love you 3000!!!
-        </div>
-        <div className="display-5 text-success">
+      <div className="game-info mt-5">
+        <div className="text-warning">{this.props.resultMsg}</div>
+        <div className="text-success">
           Total Win Game:
-          <span className="text-warning ml-2">1</span>
+          <span className="text-warning ml-2">{this.props.totalWinGame}</span>
         </div>
-        <div className="display-5 text-success">
+        <div className="text-success">
           Total Game Play:
-          <span className="text-warning ml-2">1</span>
+          <span className="text-warning ml-2">{this.props.totalGamePlay}</span>
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    resultMsg: state.RockPaperScissorsGameReducer.resultMsg,
+    totalWinGame: state.RockPaperScissorsGameReducer.totalWinGame,
+    totalGamePlay: state.RockPaperScissorsGameReducer.totalGamePlay,
+  };
+};
+
+export default connect(mapStateToProps)(GameInfo);
