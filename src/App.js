@@ -1,9 +1,9 @@
-import RockPaperScissorsGame from "./component/RockPaperScissorsGame";
+import DiceGame from "./component/DiceGame";
 
 function App() {
   return (
     <div className="container-fluid">
-      <RockPaperScissorsGame />
+      <DiceGame />
     </div>
   );
 }

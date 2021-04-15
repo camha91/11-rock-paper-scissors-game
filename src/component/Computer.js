@@ -41,7 +41,7 @@ class Computer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    computer: state.RockPaperScissorsGameReducer.computer,
+    computer: state.DiceGameReducer.computer,
   };
 };
 

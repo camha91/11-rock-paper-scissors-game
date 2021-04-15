@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import "./RockPaperScissorsGame.css";
+import "../assets/DiceGame.css";
 import Computer from "./Computer";
 import GameInfo from "./GameInfo";
 import Player from "./Player";
 import { connect } from "react-redux";
+import {
+  endGameAction,
+  randomGameItemAction,
+} from "../redux/actions/DiceGameActions";
 
-class RockPaperScissorsGame extends Component {
+class DiceGame extends Component {
   render() {
     return (
       <div className="game">
@@ -42,22 +46,17 @@ const mapDispatchToProps = (dispatch) => {
       let randomComputerItem = setInterval(() => {
         let randomNum = Math.floor(Math.random() * 3);
 
-        dispatch({
-          type: "RANDOM_GAME_ITEM",
-          randomNum,
-        });
+        dispatch(randomGameItemAction(randomNum));
         count++;
 
         if (count > 10) {
           clearInterval(randomComputerItem);
 
-          dispatch({
-            type: "END_GAME",
-          });
+          dispatch(endGameAction());
         }
       }, 100);
     },
   };
 };
 
-export default connect(null, mapDispatchToProps)(RockPaperScissorsGame);
+export default connect(null, mapDispatchToProps)(DiceGame);

@@ -21,9 +21,9 @@ class GameInfo extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    resultMsg: state.RockPaperScissorsGameReducer.resultMsg,
-    totalWinGame: state.RockPaperScissorsGameReducer.totalWinGame,
-    totalGamePlay: state.RockPaperScissorsGameReducer.totalGamePlay,
+    resultMsg: state.DiceGameReducer.resultMsg,
+    totalWinGame: state.DiceGameReducer.totalWinGame,
+    totalGamePlay: state.DiceGameReducer.totalGamePlay,
   };
 };
 

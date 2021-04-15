@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { chooseGameItemAction } from "../redux/actions/DiceGameActions";
 
 class Player extends Component {
   renderGameItem = () => {
-    return this.props.rockPaperScissorsArray.map((item, index) => {
+    return this.props.diceGameArray.map((item, index) => {
       let border = {};
       if (item.chosen) {
         border = { border: "5px solid green" };
@@ -33,14 +34,10 @@ class Player extends Component {
             width={70}
             height={70}
             src={
-              this.props.rockPaperScissorsArray.find(
-                (item) => item.chosen === true
-              ).img
+              this.props.diceGameArray.find((item) => item.chosen === true).img
             }
             alt={
-              this.props.rockPaperScissorsArray.find(
-                (item) => item.chosen === true
-              ).img
+              this.props.diceGameArray.find((item) => item.chosen === true).img
             }
           />
         </div>
@@ -58,18 +55,14 @@ class Player extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    rockPaperScissorsArray:
-      state.RockPaperScissorsGameReducer.rockPaperScissorsArray,
+    diceGameArray: state.DiceGameReducer.diceGameArray,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     chooseGameItem: (id) => {
-      dispatch({
-        type: "CHOOSE_GAME_ITEM",
-        id,
-      });
+      return dispatch(chooseGameItemAction(id));
     },
   };
 };
